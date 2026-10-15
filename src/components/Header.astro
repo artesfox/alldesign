@@ -1,0 +1,56 @@
+---
+const ruta = Astro.url.pathname.replace(/\/$/, '') || '/';
+const activo = (href: string) => {
+  const h = href.replace(/\/$/, '') || '/';
+  return h === '/' ? ruta === '/' : ruta === h || ruta.startsWith(h + '/');
+};
+const menu = [
+  { texto: 'Home', href: '/' },
+  { texto: 'Cocinas integrales', href: '/concinas-integrales/' },
+  { texto: 'Promociones', href: '/promociones/' },
+  { texto: 'Otros productos', href: '/productos/' },
+  {
+    texto: 'All design cocinas',
+    hijos: [
+      { texto: 'Nosotros', href: '/hacerca-de/' },
+      { texto: 'Mantenimiento y garantía', href: '/garantia/' },
+      { texto: 'Materiales de fabricación', href: '/materiales/' },
+    ],
+  },
+  { texto: 'Blog', href: '/blog/' },
+  { texto: 'Contacto', href: '/contacto/' },
+];
+---
+<header class="cabecera">
+  <div class="contenedor cabecera__interior">
+    <a href="/" class="cabecera__logo" aria-label="All Design Cocinas Integrales, ir al inicio">
+      <img src="/img/logo-all-design.svg" alt="All Design Cocinas Integrales" width="250" height="76" />
+    </a>
+
+    <button class="menu-boton" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="menu" id="menu-principal" aria-label="Menú principal">
+      <ul>
+        {menu.map((item) =>
+          item.hijos ? (
+            <li class="menu__grupo">
+              <button type="button" class:list={['menu__desplegar', { activo: item.hijos.some((h) => activo(h.href)) }]} aria-expanded="false">
+                {item.texto}
+                <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" /></svg>
+              </button>
+              <ul class="submenu">
+                {item.hijos.map((h) => (
+                  <li><a href={h.href} class:list={{ activo: activo(h.href) }} aria-current={activo(h.href) ? 'page' : undefined}>{h.texto}</a></li>
+                ))}
+              </ul>
+            </li>
+          ) : (
+            <li><a href={item.href} class:list={{ activo: activo((item.href ?? "/")) }} aria-current={activo((item.href ?? "/")) ? 'page' : undefined}>{item.texto}</a></li>
+          )
+        )}
+      </ul>
+    </nav>
+  </div>
+</header>

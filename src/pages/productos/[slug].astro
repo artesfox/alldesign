@@ -1,0 +1,11 @@
+---
+import Detalle from '../../components/Detalle.astro';
+import { getProductos } from '../../lib/datos';
+
+export async function getStaticPaths() {
+  const productos = await getProductos();
+  return productos.map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+const { item } = Astro.props;
+---
+<Detalle item={item} volver={{ texto: 'Otros productos', href: '/productos/' }} />

@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import Tarjeta from '../../components/Tarjeta.astro';
+import { getProductos } from '../../lib/datos';
+
+const productos = await getProductos();
+---
+<Base titulo="Otros productos" descripcion="Closets, muebles de baño, exhibidores y escritorios fabricados a la medida en Bogotá por All Design Cocinas Integrales.">
+  <section class="seccion">
+    <div class="contenedor">
+      <h1 class="titulo-centrado">Otros productos</h1>
+      <div class="grilla grilla--3">
+        {productos.map((p, i) => <Tarjeta href={`/productos/${p.slug}/`} titulo={p.titulo} imagen={p.portada} prioridad={i < 3} />)}
+      </div>
+    </div>
+  </section>
+</Base>

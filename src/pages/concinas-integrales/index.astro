@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import Tarjeta from '../../components/Tarjeta.astro';
+import { getCocinas, getPagina, textoPlano } from '../../lib/datos';
+
+const cocinas = await getCocinas();
+const pagina = await getPagina('cocinas');
+---
+<Base titulo="Cocinas" descripcion={textoPlano(pagina.contenido)}>
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="contenedor--texto intro">
+        <h1>{pagina.titulo}</h1>
+        <div class="texto descipcion_corta" tabindex="0" set:html={pagina.contenido} />
+      </div>
+      <div class="grilla grilla--2">
+        {cocinas.map((c, i) => <Tarjeta href={`/concinas-integrales/${c.slug}/`} titulo={c.titulo} imagen={c.portada} prioridad={i < 2} />)}
+      </div>
+    </div>
+  </section>
+</Base>

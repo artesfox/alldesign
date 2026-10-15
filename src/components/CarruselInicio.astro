@@ -1,0 +1,22 @@
+---
+// Carrusel de la página de inicio (Swiper): 3 fotos por vista, automático y en bucle.
+// Al tocar una foto se abre en grande (lightbox) con navegación.
+import { img } from '../lib/datos';
+interface Props { fotos: { imagen: string; alt: string }[] }
+const { fotos } = Astro.props;
+---
+<div class="carrusel-inicio" data-carrusel-inicio>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {fotos.map((f, i) => (
+        <div class="swiper-slide">
+          <a href={img(f.imagen)} class="carrusel-inicio__foto" data-lightbox="inicio" data-titulo={f.alt}>
+            <img src={img(f.imagen, true)} alt={f.alt} width="400" height="600" loading={i < 3 ? 'eager' : 'lazy'} decoding="async" />
+          </a>
+        </div>
+      ))}
+    </div>
+    <button class="swiper-button-prev" type="button" aria-label="Foto anterior"></button>
+    <button class="swiper-button-next" type="button" aria-label="Foto siguiente"></button>
+  </div>
+</div>

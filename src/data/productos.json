@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "slug": "exhibidores-y-escritorios",
+    "titulo": "Exhibidores y escritorios",
+    "descripcion": "<p>Nuestros exhibidores y escritorios están diseñados para brindar organización, funcionalidad y estilo en cualquier espacio. Cada pieza está pensada para optimizar el almacenamiento y la disposición de los elementos, permitiendo una exhibición atractiva y una distribución eficiente. </p>\n<p>Con materiales de alta calidad y acabados modernos, garantizan durabilidad y resistencia al uso diario. Ya sea para entornos comerciales, oficinas o el hogar, nuestros diseños se adaptan a diferentes necesidades, asegurando comodidad y practicidad sin comprometer la estética. Una solución ideal para mantener todo en su lugar con un toque sofisticado y ordenado.</p>",
+    "portada": "exhibidores-y-escritorios-1-min.webp",
+    "galeria": [
+      "exhibidores-y-escritorios-1-min.webp",
+      "exhibidores-y-escritorios-3.webp",
+      "exhibidores-y-escritorios-2.webp",
+      "exhibidores-y-escritorios-4.webp",
+      "exhibidores-y-escritorios-5.webp",
+      "exhibidores-y-escritorios-6.webp"
+    ],
+    "orden": 1
+  },
+  {
+    "id": 2,
+    "slug": "closets-en-madecor",
+    "titulo": "Closets en madecor",
+    "descripcion": "<p>Nuestros<strong> closets en Madecor</strong> combinan resistencia, funcionalidad y diseño moderno. Gracias a su acabado de alta calidad, ofrecen una estética elegante y una gran durabilidad. </p>\n<p>Son ideales para optimizar el espacio de almacenamiento, proporcionando soluciones prácticas y personalizadas para cada necesidad. </p>\n<p>Además, su superficie es <strong>fácil de limpiar y mantener</strong>, asegurando un look impecable por más tiempo.</p>",
+    "portada": "closets-en-madecor-1.webp",
+    "galeria": [
+      "closets-en-madecor-1.webp",
+      "closets-en-madecor-2.webp",
+      "closets-en-madecor-4.webp",
+      "closets-en-madecor-6.webp",
+      "closets-en-madecor-7.webp",
+      "closets-en-madecor-8.webp"
+    ],
+    "orden": 2
+  },
+  {
+    "id": 3,
+    "slug": "muebles-de-bano-en-tablex-rh-enchapado-en-formica",
+    "titulo": "Muebles de baño en tablex RH enchapado en fórmica",
+    "descripcion": "<p>Nuestros muebles de baño en Tablex RH enchapado en fórmica ofrecen resistencia, durabilidad y un diseño sofisticado. Gracias a su material de alta resistencia a la humedad, son ideales para espacios con alta exposición al agua, garantizando una larga vida útil sin deformaciones. </p>\n<p>El acabado en fórmica aporta un toque elegante y moderno, además de facilitar la limpieza y el mantenimiento. Una opción perfecta para combinar funcionalidad y estilo en tu baño.</p>",
+    "portada": "muebles-de-bano-en-tablex-rh-2.webp",
+    "galeria": [
+      "muebles-de-bano-en-tablex-rh-2.webp",
+      "muebles-de-bano-en-tablex-rh-6.webp",
+      "muebles-de-bano-en-tablex-rh-1.webp",
+      "muebles-de-bano-en-tablex-rh-7.webp",
+      "muebles-de-bano-en-tablex-rh-3.webp",
+      "muebles-de-bano-en-tablex-rh-4.webp",
+      "muebles-de-bano-en-tablex-rh-5.webp"
+    ],
+    "orden": 3
+  }
+]

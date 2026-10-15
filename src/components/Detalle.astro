@@ -1,0 +1,46 @@
+---
+// Página de detalle común para cocinas, productos y promociones.
+import Base from '../layouts/Base.astro';
+import GaleriaProducto from './GaleriaProducto.astro';
+import { getSitio, img, pesos, porcentaje, textoPlano, whatsapp, type Producto, type Promocion } from '../lib/datos';
+
+interface Props {
+  item: Producto | Promocion;
+  volver: { texto: string; href: string };
+  boton?: string;
+}
+const { item, volver, boton = 'Solicitar cotización' } = Astro.props;
+const sitio = await getSitio();
+const promo = 'precio' in item ? (item as Promocion) : null;
+const pct = promo ? porcentaje(promo.precio, promo.precioDescuento) : 0;
+const url = new URL(Astro.url.pathname, Astro.site).href;
+const mensaje = `Hola! Deseo ${promo ? 'información sobre la promoción' : 'una cotización de'}: ${item.titulo} ${url}`;
+---
+<Base titulo={item.titulo} descripcion={textoPlano(item.descripcion)} imagen={img(item.portada)} galerias>
+  <section class="seccion">
+    <div class="contenedor detalle">
+      <div class="detalle__galeria">
+        <GaleriaProducto fotos={item.galeria} titulo={item.titulo} />
+      </div>
+
+      <div class="detalle__info">
+        <a href={volver.href} class="detalle__volver">← {volver.texto}</a>
+        <h1>{item.titulo}</h1>
+        <div class="texto" set:html={item.descripcion} />
+
+        {promo && (
+          <div class="datos-de-la-promocion">
+            <p class="descuentos-fx-1">
+              <span class="precio-sin-descuento">{pesos(promo.precio)}</span>
+              {pct > 0 && <span class="porcentaje-descuento"> - {pct}%</span>}
+            </p>
+            <p class="precio-con-descuento">{pesos(promo.precioDescuento)}</p>
+            {promo.nota && <p class="nota_adicional">{promo.nota}</p>}
+          </div>
+        )}
+
+        <a class="boton" href={whatsapp(sitio.celular1, mensaje)} target="_blank" rel="noopener">{boton}</a>
+      </div>
+    </div>
+  </section>
+</Base>

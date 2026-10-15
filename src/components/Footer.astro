@@ -1,0 +1,33 @@
+---
+import { getSitio } from '../lib/datos';
+import Icono from './Icono.astro';
+
+const sitio = await getSitio();
+const redes = (Object.entries(sitio.redes) as [string, string][]).filter(([, url]) => url);
+const telefonos = [
+  sitio.celular1 && { etiqueta: 'Celular', numero: sitio.celular1 },
+  sitio.telefonoFijo && { etiqueta: 'Fijo', numero: sitio.telefonoFijo },
+  sitio.celular2 && { etiqueta: 'Celular', numero: sitio.celular2 },
+].filter(Boolean) as { etiqueta: string; numero: string }[];
+const tel = (n: string) => 'tel:+57' + n.replace(/\D/g, '').replace(/^57/, '');
+---
+<footer class="pie">
+  <div class="contenedor">
+    {redes.length > 0 && (
+      <ul class="redes" aria-label="Redes sociales">
+        {redes.map(([red, url]) => (
+          <li><a href={url} target="_blank" rel="noopener" aria-label={red}><Icono nombre={red} /></a></li>
+        ))}
+      </ul>
+    )}
+    <h4 class="pie__titulo">{sitio.tituloPie}</h4>
+    <p class="pie__telefonos">
+      Teléfono{telefonos.length > 1 ? 's' : ''}:
+      {telefonos.map((t, i) => (
+        <>{i > 0 && <span class="separador"> · </span>}<a href={tel(t.numero)}>{t.numero}</a></>
+      ))}
+    </p>
+    <p><a href={`mailto:${sitio.correo}`}>{sitio.correo}</a></p>
+    <p>{sitio.footerInfo} {new Date().getFullYear()}</p>
+  </div>
+</footer>

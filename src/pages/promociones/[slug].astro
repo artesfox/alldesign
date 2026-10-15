@@ -1,0 +1,11 @@
+---
+import Detalle from '../../components/Detalle.astro';
+import { getPromociones } from '../../lib/datos';
+
+export async function getStaticPaths() {
+  const promociones = await getPromociones();
+  return promociones.map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+const { item } = Astro.props;
+---
+<Detalle item={item} volver={{ texto: 'Promociones', href: '/promociones/' }} boton="Solicitar información" />

@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import { getPagina, textoPlano } from '../lib/datos';
+interface Props { clave: 'nosotros' | 'garantia' | 'materiales' }
+const pagina = await getPagina(Astro.props.clave);
+---
+<Base titulo={pagina.titulo} descripcion={textoPlano(pagina.contenido)}>
+  <section class="seccion">
+    <div class="contenedor contenedor--texto">
+      <h1 class="titulo-centrado">{pagina.titulo}</h1>
+      <div class="texto" set:html={pagina.contenido} />
+    </div>
+  </section>
+</Base>

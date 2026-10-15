@@ -1,0 +1,75 @@
+[
+  {
+    "id": 1,
+    "slug": "cocina-en-pintura-de-poliester-1-70-mt",
+    "titulo": "Cocina en pintura de poliéster 1.70 mt",
+    "descripcion": "<ul>\n<li>Cocina en pintura de poliéster 1.70 mt</li>\n<li>Campana 60 cm de 3 velocidades marca Challenger.</li>\n<li>Estufa en cristal 4 puestos a gas marca Haceb.</li>\n<li>Lavaplatos en acero inoxidable cuadrado.</li>\n</ul>",
+    "portada": "promocion-cocina-integral-1.webp",
+    "galeria": [
+      "promocion-cocina-integral-1.webp",
+      "promocion-cocina-integral-2.webp",
+      "promocion-cocina-integral-3.webp",
+      "promocion-cocina-integral-4.webp"
+    ],
+    "orden": 1,
+    "precio": 4500000,
+    "precioDescuento": 3500000,
+    "nota": "No incluye envío ni instalación."
+  },
+  {
+    "id": 2,
+    "slug": "gabinete-4",
+    "titulo": "Gabinete",
+    "descripcion": "<p><strong>Estructura:</strong> Tablex enchapado en fórmica color blanco.<br>\n<strong>Frentes:</strong> MDF pintado en poliéster color verde madera menta.</p>",
+    "portada": "gabinete-1.webp",
+    "galeria": [
+      "gabinete-1.webp"
+    ],
+    "orden": 2,
+    "precio": 300000,
+    "precioDescuento": 150000,
+    "nota": "No incluye envío ni instalación."
+  },
+  {
+    "id": 3,
+    "slug": "gabinete-3",
+    "titulo": "Gabinete",
+    "descripcion": "<p>Estructura: tablex enchapado en fórmica color blanco.<br>\nFrentes: tablex enchapado en fórmica color perlado con canto rígido.</p>",
+    "portada": "gabinete-2.webp",
+    "galeria": [
+      "gabinete-2.webp"
+    ],
+    "orden": 3,
+    "precio": 450000,
+    "precioDescuento": 225000,
+    "nota": "No incluye envío ni instalación."
+  },
+  {
+    "id": 4,
+    "slug": "gabinete-2",
+    "titulo": "Gabinete",
+    "descripcion": "<p><strong>Estructura:</strong> tablex enchapado en fórmica color blanco.<br>\n<strong>Frentes:</strong> tablex echapado en fómica color maple con canto en aluminio.</p>",
+    "portada": "gabinete-3.webp",
+    "galeria": [
+      "gabinete-3.webp"
+    ],
+    "orden": 4,
+    "precio": 400000,
+    "precioDescuento": 200000,
+    "nota": "No incluye envío ni instalación."
+  },
+  {
+    "id": 5,
+    "slug": "gabinete",
+    "titulo": "Gabinete",
+    "descripcion": "<p><strong>Estructura:</strong> tablex enchapado en formica color blanco.<br>\n<strong>Fuentes:</strong> tablex enchapado en color cedro rojo.</p>",
+    "portada": "gabinete-4.webp",
+    "galeria": [
+      "gabinete-4.webp"
+    ],
+    "orden": 5,
+    "precio": 240000,
+    "precioDescuento": 120000,
+    "nota": "No incluye envío ni instalación."
+  }
+]

@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "slug": "cocina-integral-de-diseno-minimalista-con-barra-auxiliar",
+    "titulo": "Cocina Integral de Diseño Minimalista con Barra Auxiliar",
+    "descripcion": "<p>Cocina Integral de Diseño Minimalista con Barra Auxiliar</p>\n<p>Presentamos este proyecto de cocina integral donde la funcionalidad y la estética moderna se encuentran. El diseño se caracteriza por sus gabinetes superiores en acabado madera e inferiores en tono gris neutro, ambos con un sistema de apertura sin manijas (tipo gola o push-to-open) que asegura una superficie limpia y visualmente continua.</p>\n<p>El mesón principal, en un impecable blanco cuarzo, contrasta con el elegante salpicadero de efecto mármol. Como punto focal, se destaca un práctico mesón auxiliar tipo barra que extiende el área de trabajo y crea un espacio perfecto para desayunos o comidas rápidas, uniendo el diseño y la convivencia.</p>",
+    "portada": "cocina-integral-minimalista.webp",
+    "galeria": [
+      "cocina-integral-minimalista.webp"
+    ],
+    "orden": 1
+  },
+  {
+    "id": 2,
+    "slug": "cocinas-integrales-en-alto-brillo",
+    "titulo": "Cocinas integrales en alto brillo",
+    "descripcion": "<p>Diseño moderno y elegante con superficies de alto brillo que aportan amplitud, luminosidad y un acabado sofisticado al espacio. Muebles de líneas limpias y minimalistas, sin manijas visibles, para lograr una apariencia uniforme y contemporánea.</p>\n<p>Una propuesta funcional y personalizada que combina estética, aprovechamiento del espacio y acabados de alta calidad, ideal para cocinas modernas y elegantes.</p>",
+    "portada": "cocina-integral-alto-brillo.webp",
+    "galeria": [
+      "cocina-integral-alto-brillo.webp"
+    ],
+    "orden": 2
+  },
+  {
+    "id": 3,
+    "slug": "cocinas-con-perfil-manija-interna-gola-y-graf",
+    "titulo": "Cocinas con perfil manija interna, gola y graf",
+    "descripcion": "<p>Las cocinas con perfil, manija interna, gola y graf combinan diseño y funcionalidad para ofrecer un estilo moderno y minimalista. Estas características permiten un acabado elegante y limpio, eliminando la necesidad de tiradores externos y optimizando el espacio.</p>\n<p>Gracias a la integración de perfiles ergonómicos y sistemas de apertura innovadores, logramos cocinas prácticas, cómodas y visualmente sofisticadas, adaptadas a las tendencias contemporáneas.</p>",
+    "portada": "cocinas-integrales-con-perfil-manija-interna-gola-y-graf-2.webp",
+    "galeria": [
+      "cocinas-integrales-con-perfil-manija-interna-gola-y-graf-2.webp",
+      "cocinas-integrales-con-perfil-manija-interna-gola-y-graf-4.webp",
+      "cocinas-integrales-con-perfil-manija-interna-gola-y-graf-1.webp",
+      "cocinas-integrales-con-perfil-manija-interna-gola-y-graf-3.webp",
+      "cocinas-integrales-con-perfil-manija-interna-gola-y-graf-5.webp",
+      "cocinas-integrales-con-perfil-manija-interna-gola-y-graf-6.webp",
+      "cocinas-integrales-con-perfil-manija-interna-gola-y-graf-7.webp"
+    ],
+    "orden": 3
+  },
+  {
+    "id": 4,
+    "slug": "cocinas-en-pintura-de-poliuretano-o-poliester",
+    "titulo": "Cocinas en pintura de poliuretano o poliéster",
+    "descripcion": "<p>Nuestras cocinas en pintura de poliuretano o poliéster destacan por su acabado liso, brillante y resistente. Estos recubrimientos de alta calidad ofrecen una excelente durabilidad, protección contra la humedad y un mantenimiento sencillo. </p>\n<p>Disponibles en una amplia gama de colores, permiten crear espacios modernos y elegantes con un acabado sofisticado y duradero.</p>",
+    "portada": "cocinas-integrales-en-pintura-de-poliuretano-4.webp",
+    "galeria": [
+      "cocinas-integrales-en-pintura-de-poliuretano-4.webp",
+      "cocinas-integrales-en-pintura-de-poliuretano-2.webp",
+      "cocinas-integrales-en-pintura-de-poliuretano-1.webp",
+      "cocinas-integrales-en-pintura-de-poliuretano-3.webp",
+      "cocinas-integrales-en-pintura-de-poliuretano-5.webp",
+      "cocinas-integrales-en-pintura-de-poliuretano-6.webp"
+    ],
+    "orden": 4
+  },
+  {
+    "id": 5,
+    "slug": "cocinas-en-tablex-enchapado-en-formica-con-canto-rigido",
+    "titulo": "Cocinas en tablex enchapado en fórmica con canto rígido",
+    "descripcion": "<p>Nuestras cocinas en tablex enchapado en fórmica con canto rígido ofrecen una combinación ideal de resistencia y estilo. La fórmica proporciona un acabado duradero y fácil de limpiar, mientras que el canto rígido asegura mayor protección y una apariencia sólida y elegante. Perfectas para quienes buscan funcionalidad y diseño en su cocina.</p>",
+    "portada": "cocinas-en-tablex-enchapado-en-formica-5.webp",
+    "galeria": [
+      "cocinas-en-tablex-enchapado-en-formica-5.webp",
+      "cocinas-en-tablex-enchapado-en-formica-4.webp",
+      "cocinas-en-tablex-enchapado-en-formica-2.webp",
+      "cocinas-en-tablex-enchapado-en-formica-1.webp",
+      "cocinas-en-tablex-enchapado-en-formica-3.webp",
+      "cocinas-en-tablex-enchapado-en-formica-6.webp",
+      "cocinas-en-tablex-enchapado-en-formica-7.webp"
+    ],
+    "orden": 5
+  },
+  {
+    "id": 6,
+    "slug": "cocinas-en-tablex-enchapado-en-formica-con-cantos-en-aluminio-y-canto-rigido",
+    "titulo": "Cocinas en tablex enchapado en fórmica con cantos en aluminio y canto rígido.",
+    "descripcion": "<p>Nuestras cocinas en tablex enchapado en fórmica ofrecen una combinación perfecta de resistencia y estilo. Con acabados de alta calidad, los cantos en aluminio y canto rígido brindan durabilidad y un diseño moderno, ideal para espacios funcionales y elegantes. Disfruta de una cocina con materiales resistentes al uso diario, fácil mantenimiento y una estética sofisticada</p>",
+    "portada": "cocinas-en-tablex-formica-cantos-en-auminio-3.webp",
+    "galeria": [
+      "cocinas-en-tablex-formica-cantos-en-auminio-3.webp",
+      "cocinas-en-tablex-formica-cantos-en-auminio-1.webp",
+      "cocinas-en-tablex-formica-cantos-en-auminio-2.webp",
+      "cocinas-en-tablex-formica-cantos-en-auminio-4.webp",
+      "cocinas-en-tablex-formica-cantos-en-auminio-5.webp",
+      "cocinas-en-tablex-formica-cantos-en-auminio-6.webp"
+    ],
+    "orden": 6
+  }
+]

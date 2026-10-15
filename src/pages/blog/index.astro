@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import TarjetaBlog from '../../components/TarjetaBlog.astro';
+import { getEntradas } from '../../lib/datos';
+
+const entradas = await getEntradas();
+---
+<Base titulo="Blog" descripcion="Consejos, ideas y tendencias sobre cocinas integrales, materiales y muebles para el hogar en Bogotá.">
+  <section class="seccion">
+    <div class="contenedor">
+      <h1 class="titulo-centrado">Blog</h1>
+      <div class="grilla grilla--blog">
+        {entradas.map((e, i) => <TarjetaBlog entrada={e} prioridad={i < 3} />)}
+      </div>
+    </div>
+  </section>
+</Base>

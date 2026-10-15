@@ -1,0 +1,43 @@
+---
+// Galería de detalle (cocinas, productos y promociones).
+// Conserva el efecto original: la foto como fondo, desenfocada detrás (cover)
+// y completa al frente (contain). Miniaturas debajo y lightbox al tocar.
+import { img } from '../lib/datos';
+interface Props { fotos: string[]; titulo: string }
+const { fotos, titulo } = Astro.props;
+const id = 'galeria-' + Math.random().toString(36).slice(2, 8);
+---
+<div class="contenodie" data-galeria={id}>
+  <div class="swiper galeria-principal" style="--swiper-navigation-color:#fff">
+    <div class="swiper-wrapper">
+      {fotos.map((f, i) => (
+        <div class="swiper-slide">
+          <a
+            href={img(f)}
+            class="popup-image"
+            data-lightbox={id}
+            data-titulo={titulo}
+            style={`background-image:url(${img(f)})`}
+            aria-label={`Ver foto ${i + 1} de ${fotos.length}: ${titulo}`}
+          ></a>
+        </div>
+      ))}
+    </div>
+    {fotos.length > 1 && <button class="swiper-button-prev" type="button" aria-label="Foto anterior"></button>}
+    {fotos.length > 1 && <button class="swiper-button-next" type="button" aria-label="Foto siguiente"></button>}
+  </div>
+
+  {fotos.length > 1 && (
+    <div class="swiper miniaturas-fx-galeria">
+      <div class="swiper-wrapper">
+        {fotos.map((f, i) => (
+          <div class="swiper-slide">
+            <img src={img(f, true)} alt={`${titulo} – miniatura ${i + 1}`} loading="lazy" decoding="async" />
+          </div>
+        ))}
+      </div>
+      <button class="swiper-button-prev mini-prev" type="button" aria-label="Miniaturas anteriores"></button>
+      <button class="swiper-button-next mini-next" type="button" aria-label="Miniaturas siguientes"></button>
+    </div>
+  )}
+</div>

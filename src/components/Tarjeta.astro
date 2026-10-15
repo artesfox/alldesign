@@ -1,0 +1,16 @@
+---
+// Tarjeta de la cuadrícula de cocinas, productos y promociones:
+// foto, título sobre franja oscura y, en promociones, el círculo con el % de descuento.
+import { img } from '../lib/datos';
+interface Props { href: string; titulo: string; imagen: string; descuento?: number; prioridad?: boolean }
+const { href, titulo, imagen, descuento, prioridad = false } = Astro.props;
+---
+<article class="tarjeta">
+  <a href={href} class="tarjeta__enlace">
+    <span class="tarjeta__foto">
+      <img src={img(imagen, true)} alt={titulo} width="640" height="716" loading={prioridad ? 'eager' : 'lazy'} decoding="async" />
+    </span>
+    <h2 class="tarjeta__titulo"><span>{titulo}</span></h2>
+    {descuento ? <span class="tarjeta__descuento" aria-label={`${descuento}% de descuento`}>{descuento}%</span> : null}
+  </a>
+</article>

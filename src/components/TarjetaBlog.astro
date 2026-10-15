@@ -1,0 +1,15 @@
+---
+import { fechaCorta, img, type Entrada } from '../lib/datos';
+interface Props { entrada: Entrada; prioridad?: boolean }
+const { entrada, prioridad = false } = Astro.props;
+---
+<article class="entrada">
+  <a href={`/${entrada.slug}/`} class="entrada__foto" tabindex="-1" aria-hidden="true">
+    <img src={img(entrada.imagen, true)} alt="" width="640" height="448" loading={prioridad ? 'eager' : 'lazy'} decoding="async" />
+  </a>
+  <div class="entrada__cuerpo">
+    <h2 class="entrada__titulo"><a href={`/${entrada.slug}/`}>{entrada.titulo}</a></h2>
+    <time class="entrada__fecha" datetime={entrada.fecha}>{fechaCorta(entrada.fecha)}</time>
+    <p>{entrada.extracto}</p>
+  </div>
+</article>
