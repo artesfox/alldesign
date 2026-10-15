@@ -1,0 +1,59 @@
+Dirección del sitio: https://alldesign.com.co/
+Nombre del cliente: all-design-cocinas
+carpeta de mi escritorio: all-design-cocinas
+
+
+==PAGINA DE ICNIIO
+De la página de incio yo edito con un formualrio en WP los siguientes:
+Título de págian d eincio*: Actualemnte este valor: All design cocinas integrales
+Descripción página*: Actualemnte este Valor: En All Design Cocinas Integrales, somos expertos en la fabricación y diseño de cocinas integrales en Bogotá a la medida, adaptándonos a las necesidades y preferencias de cada cliente. Nos especializamos en ofrecer soluciones innovadoras con materiales de alta calidad, garantizando espacios funcionales, estéticos y duraderos.
+
+Nuestro compromiso es brindar un servicio excepcional, cumpliendo con los más altos estándares de calidad e innovación. Nos enfocamos en diseñar, fabricar e instalar cocinas integrales modernas en Bogotá, asegurando satisfacción total y cumplimiento en tiempos de entrega.
+<h2>Cocinas Integrales en Bogotá: Diseños a la Medida</h2>
+Descubre nuestro catálogo de cocinas integrales en Bogotá, con una amplia variedad de estilos y acabados para transformar tu hogar. Diseñamos espacios que combinan funcionalidad y elegancia, utilizando materiales resistentes y modernos.
+
+👉 Explora nuestros diseños de cocinas aquí:
+<a href="https://alldesign.com.co/concinas-integrales/">Cocinas Integrales Bogotá</a>
+<h3>Muebles para el Hogar: Complementa tu Espacio</h3>
+Además de nuestras cocinas integrales, ofrecemos una línea exclusiva de muebles vanguardistas para el hogar, siempre alineados con las últimas tendencias en diseño y fabricación.
+<ul>
+ 	<li>🔹 Closets personalizados</li>
+ 	<li>🔹 Escritorios y exhibidores modernos</li>
+ 	<li>🔹 Materiales de alta calidad</li>
+</ul>
+En All Design Cocinas, garantizamos que cada mueble y cada cocina integral sean diseñados con precisión, asegurando espacios armoniosos, elegantes y funcionales. Nuestro enfoque en la calidad y la innovación nos permite crear ambientes que superan las expectativas de nuestros clientes en Bogotá y sus alrededores.
+
+🚀 Transforma tu hogar con una cocina integral, moderna y personalizada en Bogotá. Contáctanos y haz realidad el diseño que siempre soñaste.
+Título pie de página: Actualemnt este valor All design cocinas integrales
+Número de celular 1: Actualemnte este valor: 3162899290 
+Teléfono fijo: Existe d emomento pero la idea es que si imprima al lado del otro telefono
+Número de celular 2: Actualemnte sin valor aunque la idea es que se imprima al lado de los otros teléfonos
+
+
+Footer Info: Actuaolemnte este valor: Todos los derechos reservados ©
+Correo del sitio: Actualemnte este Valor: patricia.silva@alldesign.com.co
+GAaería d einicio osea ese slide stilo carrucel
+Facebook: actualemnte con https://facebook.com/alldesigncocinas.com.co
+Instagram: Sin valor actual
+Linkedin: https://linkedin.com/company/alldesigncocinas
+YouTube: https://www.youtube.com/@Alldesigncocinas/videos
+Tiktok: sin Valor
+Pinterest: sin valor
+Google: https://www.google.com/maps/place/All+Design+Cocinas+Integrales+en+Bogot%C3%A1/@4.7477007,-74.1010994,17z/data=!3m1!4b1!4m6!3m5!1s0x8e3f845f8e2e3095:0x37a8b60fd6d72bf0!8m2!3d4.7477007!4d-74.0985245!16s%2Fg%2F1ptxqthfj?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D
+
+DETALLE DE COSINA INTEGRAL
+
+Página de galería de detalle de producto tiene ste formulario con los siguientes campos:
+Título de producto*
+Descripción del producto*
+Galería Fotos *
+
+PAGINA OTROS PRODUCTOS TIENE EL MISMO FORMULARIO
+PÁGINA DE PROCMOCIONE
+tiene el mismo formulario pero con dos campos adicionales
+PORecio con decuento
+Precio con descuento
+y bueno de ahy sale el calculod eporcetaje de cuanto es la promocion como puede sver ene el grid de promociones cada tarjetica queda con un circuloque encierra el pocentaje en numeros enteros de la promocion
+
+Página de Blog
+esa trae un formulario interno con titulo. descripción e imagen destacada
