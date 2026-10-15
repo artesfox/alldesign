@@ -1,45 +1,89 @@
-# All Design Cocinas Integrales – sitio en Astro
+# All Design Cocinas Integrales – sitio en Astro + panel de administración
 
-Migración de https://alldesign.com.co (WordPress + Divi) a Astro.
+Migración de https://alldesign.com.co (WordPress + Divi) a Astro en Cloudflare Pages.
+El contenido se guarda en una base de datos **D1** y las fotos nuevas en **R2**.
+El cliente lo actualiza desde **/admin**.
 
-## Publicar en Cloudflare Pages
+---
 
-1. Sube esta carpeta a un repositorio nuevo de GitHub (por ejemplo `all-design-cocinas`).
-2. En Cloudflare: **Workers & Pages → Crear → Pages → Conectar con Git** y elige el repositorio.
-3. En **Framework preset** elige **Astro**. Cloudflare llena solo:
-   - Comando de build: `npm run build`
-   - Carpeta de salida: `dist`
-4. Guarda y publica. Quedará en `all-design-cocinas.pages.dev`.
+## Configuración en Cloudflare (una sola vez)
 
-No necesitas instalar nada en tu computador: Cloudflare construye el sitio cada vez que subes cambios a GitHub.
+Haz estos pasos **antes** de subir esta versión a GitHub.
 
-> Opcional, para verlo en tu computador antes de subirlo: `npm install` y luego `npm run dev`.
+### 1. Crear la base de datos (D1)
+**Almacenamiento y bases de datos → D1 → Crear base de datos**
+- Nombre: `alldesign-db`
+
+### 2. Crear el almacenamiento de fotos (R2)
+**Almacenamiento y bases de datos → R2 → Crear bucket**
+- Nombre: `alldesign-fotos`
+- La primera vez Cloudflare puede pedir activar R2 con un método de pago. Los primeros 10 GB son gratis.
+
+### 3. Conectar ambos al proyecto
+**Workers y Pages → alldesigncocinas → Configuración → Vinculaciones → Agregar**
+
+| Tipo | Nombre de la variable | Valor |
+|---|---|---|
+| Base de datos D1 | `DB` | `alldesign-db` |
+| Bucket de R2 | `FOTOS` | `alldesign-fotos` |
+
+### 4. Usuario y contraseña del panel
+**Configuración → Variables y secretos → Agregar** (en *Producción*):
+
+| Nombre | Tipo | Valor |
+|---|---|---|
+| `ADMIN_USUARIO` | Texto | el usuario, por ejemplo `patricia` |
+| `ADMIN_CLAVE` | **Secreto** | una contraseña segura (12+ caracteres) |
+| `SESION_SECRETO` | **Secreto** | 40 letras y números al azar (nadie necesita recordarlo) |
+
+### 5. Marca de compatibilidad
+**Configuración → Tiempo de ejecución → Marcas de compatibilidad**: agrega `nodejs_compat`.
+
+### 6. Publicar
+Sube los archivos a GitHub. Cloudflare compila y publica solo.
+(Si configuraste algo después de publicar: **Implementaciones → … → Reintentar implementación**.)
+
+### 7. Instalar la base de datos
+Entra a `https://alldesigncocinas.pages.dev/admin`, inicia sesión y pulsa **Instalar base de datos**.
+Se crean las tablas y se copia todo el contenido actual. Solo se hace una vez.
+
+---
+
+## El panel (/admin)
+
+- **Resumen**: cantidad de cocinas, promociones, productos y entradas, con accesos rápidos.
+- **Inicio e información**: título y descripción del inicio, carrusel, teléfonos, correo, pie de página y redes.
+- **Cocinas integrales / Promociones / Otros productos**: publicar, editar, borrar, ordenar y guardar como borrador.
+  En promociones el % de descuento se calcula solo.
+- **Entradas del blog**: título, fecha, descripción e imagen destacada.
+- Las fotos se **optimizan en el navegador** (WebP de máx. 1600 px + miniatura) antes de subirse.
+
+### Seguridad
+- Usuario y contraseña viven como variables cifradas de Cloudflare, no en el código.
+- Sesión firmada en una cookie segura que vence en 8 horas.
+- Máximo 5 intentos fallidos cada 15 minutos por IP.
+- El HTML del editor se limpia antes de guardarse (sin scripts ni eventos).
+- `/admin` y `/api` no se indexan en Google.
+
+Para **cambiar la contraseña**: edita `ADMIN_CLAVE` en Cloudflare y vuelve a implementar.
+
+---
 
 ## Dónde está cada cosa
 
 | Qué | Dónde |
 |---|---|
-| Textos del inicio, teléfonos, correo, redes, carrusel | `src/data/sitio.json` |
-| Cocinas integrales | `src/data/cocinas.json` |
-| Otros productos | `src/data/productos.json` |
-| Promociones (precio y precio con descuento; el % se calcula solo) | `src/data/promociones.json` |
-| Entradas del blog | `src/data/blog.json` |
-| Nosotros, Garantía, Materiales, texto de Cocinas | `src/data/paginas.json` |
-| Fotos (WebP optimizadas) y miniaturas | `public/uploads/` y `public/uploads/mini/` |
-| Estilos | `src/styles/global.css` |
-| Menú, carrusel, galerías y visor de fotos | `public/js/sitio.js` y `public/js/galerias.js` |
-| Lectura de datos (lo único que cambia en la etapa 2) | `src/lib/datos.ts` |
+| Lectura de datos (D1) | `src/lib/datos.ts` |
+| Guardado y validación del panel | `src/lib/admin.ts`, `src/lib/limpiar.ts` |
+| Inicio de sesión | `src/lib/auth.ts`, `src/middleware.ts` |
+| Páginas del panel | `src/pages/admin/` |
+| API del panel | `src/pages/api/` |
+| Estilos del sitio / del panel | `src/styles/global.css` / `src/styles/panel.css` |
+| JavaScript del sitio / del panel | `public/js/sitio.js`, `public/js/galerias.js` / `public/js/panel.js` |
+| Contenido inicial (se usa al instalar) | `src/data/*.json` |
+| Textos fijos: Nosotros, Garantía, Materiales | `src/data/paginas.json` |
+| Estructura de la base de datos | `base-de-datos/1-tablas.sql` (y `2-datos.sql` como respaldo) |
+| Fotos migradas de WordPress | `public/uploads/` |
+| Fotos subidas desde el panel | R2 → se ven en `/fotos/…` |
 
-## Direcciones
-
-Se mantienen las mismas URLs de WordPress para no perder el posicionamiento en Google:
-`/concinas-integrales/…`, `/productos/…`, `/promociones/…`, `/blog/`, `/hacerca-de/`,
-`/garantia/`, `/materiales/`, `/contacto/` y las entradas del blog en la raíz (`/nombre-entrada/`).
-
-## Etapa 2 (próxima): panel de administración
-
-- Base de datos **D1** con las mismas tablas que los archivos JSON (sitio, cocinas, productos, promociones, entradas).
-- Fotos en **R2**, comprimidas en el navegador antes de subir.
-- Panel `/admin` con login: resumen (cantidad de cocinas, promociones, productos y entradas) y secciones para
-  editar inicio e información, cocinas, promociones, otros productos y entradas (publicar, editar y borrar).
-- Se agregará el adaptador `@astrojs/cloudflare` con `output: 'server'`.
+Se mantienen las mismas URLs de WordPress para no perder el posicionamiento en Google.

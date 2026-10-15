@@ -1,0 +1,89 @@
+---
+// Formulario de cocina, producto o promoción (crear y editar).
+import EditorTexto from './EditorTexto.astro';
+import GestorFotos from './GestorFotos.astro';
+import { TIPOS, type Promocion, type TipoCatalogo } from '../../lib/datos';
+
+interface Props { tipo: TipoCatalogo; item?: Promocion | null }
+const { tipo, item } = Astro.props;
+const info = TIPOS[tipo];
+const esPromo = tipo === 'promociones';
+const nuevo = !item;
+const miles = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+---
+<form
+  class="formulario-panel"
+  data-formulario
+  data-url={nuevo ? '/api/admin/catalogo' : `/api/admin/catalogo/${item?.id}`}
+  data-metodo={nuevo ? 'POST' : 'PUT'}
+  data-volver={`/admin/${tipo}`}
+  novalidate
+>
+  <input type="hidden" name="tipo" value={tipo} />
+
+  <section class="tarjeta bloque">
+    <h2 class="bloque__titulo">Información</h2>
+    <p class="bloque__ayuda">Así aparecerá en la página de {info.plural.toLowerCase()}.</p>
+    <div class="campos">
+      <div class="campo campo--ancho">
+        <label for="titulo">Título {esPromo ? 'de la promoción' : 'del producto'} <span class="req">*</span></label>
+        <input class="entrada" id="titulo" name="titulo" type="text" maxlength="160" required value={item?.titulo ?? ''} />
+      </div>
+      <EditorTexto nombre="descripcion" etiqueta={`Descripción ${esPromo ? 'de la promoción' : 'del producto'}`} valor={item?.descripcion ?? ''} requerido />
+    </div>
+  </section>
+
+  {esPromo && (
+    <section class="tarjeta bloque">
+      <h2 class="bloque__titulo">Precios</h2>
+      <p class="bloque__ayuda">El porcentaje de descuento se calcula solo y aparece en el círculo rojo de la tarjeta.</p>
+      <div class="campos campos--3">
+        <div class="campo">
+          <label for="precio">Precio sin descuento <span class="req">*</span></label>
+          <div class="entrada-prefijo"><span>$</span><input class="entrada" id="precio" name="precio" inputmode="numeric" data-pesos value={item?.precio ? miles(item.precio) : ''} required /></div>
+        </div>
+        <div class="campo">
+          <label for="precioDescuento">Precio con descuento <span class="req">*</span></label>
+          <div class="entrada-prefijo"><span>$</span><input class="entrada" id="precioDescuento" name="precioDescuento" inputmode="numeric" data-pesos value={item?.precioDescuento ? miles(item.precioDescuento) : ''} required /></div>
+        </div>
+        <div class="campo">
+          <span class="etiqueta-campo">Descuento</span>
+          <span class="descuento-vivo" data-descuento>—</span>
+        </div>
+        <div class="campo campo--ancho">
+          <label for="nota">Nota adicional</label>
+          <input class="entrada" id="nota" name="nota" type="text" maxlength="200" placeholder="Ej: No incluye envío ni instalación." value={item?.nota ?? ''} />
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="tarjeta bloque">
+    <h2 class="bloque__titulo">Galería de fotos</h2>
+    <p class="bloque__ayuda">La primera foto es la portada. Arrastra para cambiar el orden. Las fotos se optimizan solas antes de subirse.</p>
+    <GestorFotos nombre="galeria" etiqueta="Fotos" fotos={item?.galeria ?? []} requerido />
+  </section>
+
+  <section class="tarjeta bloque">
+    <div class="campos">
+      <div class="campo">
+        <label for="orden">Orden en la lista</label>
+        <input class="entrada" id="orden" name="orden" type="number" min="0" step="1" value={item?.orden ?? 0} />
+        <small>Los números más bajos aparecen primero.</small>
+      </div>
+      <div class="campo">
+        <span class="etiqueta-campo">Visibilidad</span>
+        <label class="interruptor"><input type="checkbox" name="publicado" checked={item ? item.publicado : true} /> Publicado en la web</label>
+        <small>Si lo apagas, se guarda como borrador y no aparece en la web.</small>
+      </div>
+    </div>
+  </section>
+
+  <div class="barra-guardar">
+    <span class="barra-guardar__estado" data-estado>{nuevo ? 'Nuevo' : 'Sin cambios'}</span>
+    <div class="barra-guardar__botones">
+      {!nuevo && <a class="btn btn--suave" href={`${info.ruta}${item?.slug}/`} target="_blank" rel="noopener">Ver en la web</a>}
+      <button type="submit" class="btn btn--primario btn--grande">{nuevo ? 'Publicar' : 'Guardar cambios'}</button>
+    </div>
+  </div>
+</form>

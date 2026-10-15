@@ -1,0 +1,85 @@
+---
+import '../styles/panel.css';
+
+interface Props { titulo: string; seccion?: string }
+const { titulo, seccion = '' } = Astro.props;
+const usuario = Astro.locals.usuario ?? '';
+
+const menu = [
+  { id: 'resumen', texto: 'Resumen', href: '/admin', icono: 'M3 12l9-9 9 9M5 10v10h5v-6h4v6h5V10' },
+  { id: 'inicio', texto: 'Inicio e información', href: '/admin/inicio', icono: 'M4 5h16M4 12h16M4 19h10' },
+  { id: 'cocinas', texto: 'Cocinas integrales', href: '/admin/cocinas', icono: 'M4 4h16v7H4zM4 11v9h16v-9M9 15h6' },
+  { id: 'promociones', texto: 'Promociones', href: '/admin/promociones', icono: 'M20 12l-8 8-9-9V3h8l9 9zM7.5 7.5h.01' },
+  { id: 'productos', texto: 'Otros productos', href: '/admin/productos', icono: 'M3 7l9-4 9 4-9 4-9-4zm0 0v10l9 4 9-4V7' },
+  { id: 'entradas', texto: 'Entradas del blog', href: '/admin/entradas', icono: 'M5 4h11l3 3v13H5zM9 9h6M9 13h6M9 17h4' },
+];
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{titulo} · Panel All Design</title>
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" />
+  </head>
+  <body class="panel">
+    <aside class="lateral" id="lateral">
+      <a href="/admin" class="lateral__logo"><img src="/img/logo-all-design.svg" alt="All Design" width="170" height="52" /></a>
+      <nav aria-label="Panel">
+        <ul>
+          {menu.map((m) => (
+            <li>
+              <a href={m.href} class:list={{ activo: seccion === m.id }} aria-current={seccion === m.id ? 'page' : undefined}>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d={m.icono} /></svg>
+                {m.texto}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div class="lateral__pie">
+        <a href="/" target="_blank" rel="noopener" class="lateral__ver">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6" /></svg>
+          Ver la página web
+        </a>
+        <form method="post" action="/api/salir">
+          <button type="submit" class="lateral__salir">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10" /></svg>
+            Cerrar sesión
+          </button>
+        </form>
+      </div>
+    </aside>
+    <div class="velo-lateral" data-cerrar-lateral></div>
+
+    <div class="principal">
+      <header class="barra">
+        <button class="barra__menu" type="button" aria-label="Abrir menú" data-abrir-lateral>
+          <span></span><span></span><span></span>
+        </button>
+        <h1 class="barra__titulo">{titulo}</h1>
+        {usuario && <span class="barra__usuario" title="Sesión iniciada">{usuario.slice(0, 1).toUpperCase()}</span>}
+      </header>
+      <main class="contenido">
+        <slot />
+      </main>
+    </div>
+
+    <div class="avisos" aria-live="polite"></div>
+    <dialog class="dialogo" id="dialogo-confirmar">
+      <form method="dialog">
+        <h2 data-dialogo-titulo>¿Seguro?</h2>
+        <p data-dialogo-texto></p>
+        <div class="dialogo__botones">
+          <button value="no" class="btn btn--suave">Cancelar</button>
+          <button value="si" class="btn btn--peligro">Sí, eliminar</button>
+        </div>
+      </form>
+    </dialog>
+    <script is:inline src="/js/panel.js" defer></script>
+  </body>
+</html>

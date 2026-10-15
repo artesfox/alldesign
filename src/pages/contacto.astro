@@ -2,9 +2,9 @@
 // Contacto. En la etapa 1 el formulario arma el mensaje y lo abre en WhatsApp
 // (no necesita servidor). En la etapa 2 se podrá enviar también por correo.
 import Base from '../layouts/Base.astro';
-import { getSitio } from '../lib/datos';
+import { getDB, getSitio } from '../lib/datos';
 
-const sitio = await getSitio();
+const sitio = await getSitio(getDB(Astro.locals));
 const numero = sitio.celular1.replace(/\D/g, '');
 ---
 <Base titulo="Contacto" descripcion="Contáctanos para cotizar tu cocina integral, closet o mueble a la medida en Bogotá. All Design Cocinas Integrales.">

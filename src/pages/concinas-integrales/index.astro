@@ -1,9 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Tarjeta from '../../components/Tarjeta.astro';
-import { getCocinas, getPagina, textoPlano } from '../../lib/datos';
+import { getCatalogo, getDB, getPagina, textoPlano } from '../../lib/datos';
 
-const cocinas = await getCocinas();
+const cocinas = await getCatalogo(getDB(Astro.locals), 'cocinas');
 const pagina = await getPagina('cocinas');
 ---
 <Base titulo="Cocinas" descripcion={textoPlano(pagina.contenido)}>

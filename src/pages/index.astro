@@ -1,11 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
 import CarruselInicio from '../components/CarruselInicio.astro';
-import { getSitio, textoPlano } from '../lib/datos';
+import { getDB, getSitio, img, textoPlano } from '../lib/datos';
 
-const sitio = await getSitio();
+const sitio = await getSitio(getDB(Astro.locals));
 ---
-<Base titulo="All Design Cocinas Integrales" descripcion={textoPlano(sitio.descripcion)} imagen={`/uploads/${sitio.galeriaInicio[0]?.imagen}`} galerias>
+<Base titulo="All Design Cocinas Integrales" descripcion={textoPlano(sitio.descripcion)} imagen={img(sitio.galeriaInicio[0]?.imagen ?? '')} galerias>
   <section class="seccion seccion--inicio">
     <div class="contenedor">
       <CarruselInicio fotos={sitio.galeriaInicio} />

@@ -1,0 +1,11 @@
+---
+import Panel from '../../../layouts/Panel.astro';
+import FormularioItem from '../../../components/panel/FormularioItem.astro';
+import { esTipo, TIPOS } from '../../../lib/datos';
+
+const { tipo } = Astro.params;
+if (!esTipo(tipo)) return Astro.redirect('/admin');
+---
+<Panel titulo={`Nueva ${TIPOS[tipo].singular}`} seccion={tipo}>
+  <FormularioItem tipo={tipo} />
+</Panel>

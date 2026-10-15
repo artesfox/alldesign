@@ -1,14 +1,15 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Tarjeta from '../../components/Tarjeta.astro';
-import { getPromociones, porcentaje } from '../../lib/datos';
+import { getCatalogo, getDB, porcentaje } from '../../lib/datos';
 
-const promociones = await getPromociones();
+const promociones = await getCatalogo(getDB(Astro.locals), 'promociones');
 ---
 <Base titulo="Promociones" descripcion="Promociones y descuentos en cocinas integrales, gabinetes y muebles en Bogotá. All Design Cocinas Integrales.">
   <section class="seccion">
     <div class="contenedor">
       <h1 class="titulo-centrado">Promociones</h1>
+      {promociones.length === 0 && <p class="titulo-centrado">Pronto tendremos nuevas promociones. ¡Escríbenos por WhatsApp!</p>}
       <div class="grilla grilla--3">
         {promociones.map((p, i) => (
           <Tarjeta href={`/promociones/${p.slug}/`} titulo={p.titulo} imagen={p.portada} descuento={porcentaje(p.precio, p.precioDescuento)} prioridad={i < 3} />

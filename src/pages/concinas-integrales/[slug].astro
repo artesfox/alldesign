@@ -1,11 +1,8 @@
 ---
 import Detalle from '../../components/Detalle.astro';
-import { getCocinas } from '../../lib/datos';
+import { getDB, getItem } from '../../lib/datos';
 
-export async function getStaticPaths() {
-  const cocinas = await getCocinas();
-  return cocinas.map((item) => ({ params: { slug: item.slug }, props: { item } }));
-}
-const { item } = Astro.props;
+const item = await getItem(getDB(Astro.locals), 'cocinas', Astro.params.slug ?? '');
+if (!item) return Astro.rewrite('/404');
 ---
 <Detalle item={item} volver={{ texto: 'Cocinas integrales', href: '/concinas-integrales/' }} />

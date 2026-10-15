@@ -1,0 +1,53 @@
+---
+import '../../styles/panel.css';
+import { configuracionLista } from '../../lib/auth';
+
+const env = (Astro.locals.runtime?.env ?? {}) as Partial<Env>;
+const listo = configuracionLista(env);
+const e = Astro.url.searchParams.get('error');
+const mensajes: Record<string, string> = {
+  datos: 'Usuario o contraseña incorrectos.',
+  bloqueado: 'Demasiados intentos fallidos. Espera 15 minutos e inténtalo de nuevo.',
+  config: 'El panel aún no está configurado en Cloudflare (faltan las variables de acceso).',
+};
+const salio = Astro.url.searchParams.has('salio');
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Iniciar sesión · Panel All Design</title>
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" />
+  </head>
+  <body class="panel">
+    <main class="login">
+      <div class="tarjeta login__caja">
+        <img src="/img/logo-all-design.svg" alt="All Design Cocinas Integrales" width="210" height="64" />
+        <h1>Panel de administración</h1>
+        <p>Ingresa para actualizar la página web.</p>
+
+        {e && mensajes[e] && <div class="alerta alerta--error" role="alert">{mensajes[e]}</div>}
+        {salio && <div class="alerta alerta--ok">Cerraste sesión correctamente.</div>}
+        {!listo && <div class="alerta alerta--aviso">Falta configurar ADMIN_USUARIO, ADMIN_CLAVE y SESION_SECRETO en Cloudflare.</div>}
+
+        <form method="post" action="/api/login">
+          <div class="campo">
+            <label for="usuario">Usuario</label>
+            <input class="entrada" id="usuario" name="usuario" type="text" autocomplete="username" required autofocus />
+          </div>
+          <div class="campo">
+            <label for="clave">Contraseña</label>
+            <div class="ver-clave">
+              <input class="entrada" id="clave" name="clave" type="password" autocomplete="current-password" required />
+              <button type="button" onclick="const c=document.getElementById('clave');c.type=c.type==='password'?'text':'password';this.textContent=c.type==='password'?'Ver':'Ocultar'">Ver</button>
+            </div>
+          </div>
+          <button type="submit" class="btn btn--primario btn--grande">Entrar</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

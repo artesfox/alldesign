@@ -3,16 +3,14 @@
 // para no perder el posicionamiento en Google.
 import Base from '../layouts/Base.astro';
 import TarjetaBlog from '../components/TarjetaBlog.astro';
-import { fechaCorta, getEntradas, img, type Entrada } from '../lib/datos';
+import { fechaCorta, getDB, getEntrada, getEntradas, img } from '../lib/datos';
 
-export async function getStaticPaths() {
-  const entradas = await getEntradas();
-  return entradas.map((entrada, i) => ({
-    params: { slug: entrada.slug },
-    props: { entrada, relacionadas: [...entradas.slice(i + 1), ...entradas.slice(0, i)].slice(0, 3) },
-  }));
-}
-const { entrada, relacionadas } = Astro.props as { entrada: Entrada; relacionadas: Entrada[] };
+const db = getDB(Astro.locals);
+const entrada = await getEntrada(db, Astro.params.slug ?? '');
+if (!entrada) return Astro.rewrite('/404');
+const todas = await getEntradas(db);
+const i = todas.findIndex((e) => e.id === entrada.id);
+const relacionadas = [...todas.slice(i + 1), ...todas.slice(0, Math.max(i, 0))].slice(0, 3);
 ---
 <Base titulo={entrada.titulo} descripcion={entrada.extracto} imagen={img(entrada.imagen)}>
   <article class="seccion">
@@ -20,17 +18,19 @@ const { entrada, relacionadas } = Astro.props as { entrada: Entrada; relacionada
       <a href="/blog/" class="detalle__volver">← Blog</a>
       <h1>{entrada.titulo}</h1>
       <time class="entrada__fecha" datetime={entrada.fecha}>{fechaCorta(entrada.fecha)}</time>
-      <img class="articulo__imagen" src={img(entrada.imagen)} alt={entrada.titulo} loading="eager" decoding="async" />
+      {entrada.imagen && <img class="articulo__imagen" src={img(entrada.imagen)} alt={entrada.titulo} loading="eager" decoding="async" />}
       <div class="texto" set:html={entrada.contenido} />
     </div>
   </article>
 
-  <section class="seccion seccion--gris">
-    <div class="contenedor">
-      <h2 class="titulo-centrado">Entradas relacionadas</h2>
-      <div class="grilla grilla--blog">
-        {relacionadas.map((e) => <TarjetaBlog entrada={e} />)}
+  {relacionadas.length > 0 && (
+    <section class="seccion seccion--gris">
+      <div class="contenedor">
+        <h2 class="titulo-centrado">Entradas relacionadas</h2>
+        <div class="grilla grilla--blog">
+          {relacionadas.map((e) => <TarjetaBlog entrada={e} />)}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 </Base>

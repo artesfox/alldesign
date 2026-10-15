@@ -1,11 +1,13 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import cloudflare from '@astrojs/cloudflare';
 
-// Etapa 1: sitio estático.
-// Etapa 2 (panel de administración): se agregará el adaptador de Cloudflare
-// y `output: 'server'` para leer los datos desde la base de datos D1.
+// Etapa 2: el sitio se arma en Cloudflare en cada visita, leyendo la base de datos D1.
+// Las fotos subidas desde el panel se guardan en R2.
 export default defineConfig({
   site: 'https://alldesign.com.co',
+  output: 'server',
+  adapter: cloudflare({ imageService: 'passthrough' }),
   trailingSlash: 'ignore',
-  build: { format: 'directory' },
+  security: { checkOrigin: true },
 });

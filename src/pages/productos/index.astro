@@ -1,9 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Tarjeta from '../../components/Tarjeta.astro';
-import { getProductos } from '../../lib/datos';
+import { getCatalogo, getDB } from '../../lib/datos';
 
-const productos = await getProductos();
+const productos = await getCatalogo(getDB(Astro.locals), 'productos');
 ---
 <Base titulo="Otros productos" descripcion="Closets, muebles de baño, exhibidores y escritorios fabricados a la medida en Bogotá por All Design Cocinas Integrales.">
   <section class="seccion">

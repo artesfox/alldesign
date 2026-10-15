@@ -1,8 +1,9 @@
 ---
-import { getSitio } from '../lib/datos';
+import type { Sitio } from '../lib/datos';
 import Icono from './Icono.astro';
 
-const sitio = await getSitio();
+interface Props { sitio: Sitio }
+const { sitio } = Astro.props;
 const redes = (Object.entries(sitio.redes) as [string, string][]).filter(([, url]) => url);
 const telefonos = [
   sitio.celular1 && { etiqueta: 'Celular', numero: sitio.celular1 },

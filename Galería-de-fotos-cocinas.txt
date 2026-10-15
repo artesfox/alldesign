@@ -1,0 +1,294 @@
+EL CÓDIGO QUE RENDERIZA
+
+Algo que me gusta ede galkareía con mis estilos CSS es que mantiene la imagen como fondo: así
+style="background-image: url(https:/
+.contenodie .swiper-slide a:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: inherit;
+    filter: blur(8px);
+    content: "";
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.6);
+    background-size: cover;
+}
+
+.contenodie .swiper-slide a:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: inherit;
+    content: "";
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+<div class="et_pb_module et_pb_code et_pb_code_0_tb_body contenodie">
+				
+				
+				
+				
+				<div class="et_pb_code_inner"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"><script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script><div class="contenodie"><div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2 swiper-initialized swiper-horizontal swiper-backface-hidden"><div class="swiper-wrapper" id="swiper-wrapper-fc352cbefb810a9ea" aria-live="polite"><div class="swiper-slide swiper-slide-active" style="width: 287px; margin-right: 10px;" role="group" aria-label="1 / 7"><a href="https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-2.jpg" class="popup-image" style="background-image: url(https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-2.jpg); "></a></div><div class="swiper-slide swiper-slide-next" style="width: 287px; margin-right: 10px;" role="group" aria-label="2 / 7"><a href="https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-4.jpg" class="popup-image" style="background-image: url(https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-4.jpg); "></a></div><div class="swiper-slide" style="width: 287px; margin-right: 10px;" role="group" aria-label="3 / 7"><a href="https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-1.jpg" class="popup-image" style="background-image: url(https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-1.jpg); "></a></div><div class="swiper-slide" style="width: 287px; margin-right: 10px;" role="group" aria-label="4 / 7"><a href="https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-3.jpg" class="popup-image" style="background-image: url(https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-3.jpg); "></a></div><div class="swiper-slide" style="width: 287px; margin-right: 10px;" role="group" aria-label="5 / 7"><a href="https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-5.jpg" class="popup-image" style="background-image: url(https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-5.jpg); "></a></div><div class="swiper-slide" style="width: 287px; margin-right: 10px;" role="group" aria-label="6 / 7"><a href="https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-6.jpg" class="popup-image" style="background-image: url(https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-6.jpg); "></a></div><div class="swiper-slide" role="group" aria-label="7 / 7" style="width: 287px; margin-right: 10px;"><a href="https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-7.jpg" class="popup-image" style="background-image: url(https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-7.jpg); "></a></div></div><div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-fc352cbefb810a9ea" aria-disabled="false"></div><div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-fc352cbefb810a9ea" aria-disabled="true"></div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div><div thumbsslider="" class="swiper mySwiper miniaturas-fx-galeria swiper-initialized swiper-horizontal swiper-free-mode swiper-watch-progress swiper-backface-hidden swiper-thumbs"><div class="swiper-wrapper" id="swiper-wrapper-8f0a5c88ffac55af" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);"><div class="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active swiper-slide-thumb-active" style="width: 65.75px; margin-right: 10px;" role="group" aria-label="1 / 7"><img decoding="async" src="https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-2.jpg" alt=""></div><div class="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-next" style="width: 65.75px; margin-right: 10px;" role="group" aria-label="2 / 7"><img decoding="async" src="https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-4.jpg" alt=""></div><div class="swiper-slide swiper-slide-visible swiper-slide-fully-visible" style="width: 65.75px; margin-right: 10px;" role="group" aria-label="3 / 7"><img decoding="async" src="https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-1.jpg" alt=""></div><div class="swiper-slide swiper-slide-visible swiper-slide-fully-visible" style="width: 65.75px; margin-right: 10px;" role="group" aria-label="4 / 7"><img decoding="async" src="https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-3.jpg" alt=""></div><div class="swiper-slide" style="width: 65.75px; margin-right: 10px;" role="group" aria-label="5 / 7"><img decoding="async" src="https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-5.jpg" alt=""></div><div class="swiper-slide" style="width: 65.75px; margin-right: 10px;" role="group" aria-label="6 / 7"><img decoding="async" src="https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-6.jpg" alt=""></div><div class="swiper-slide" role="group" aria-label="7 / 7" style="width: 65.75px; margin-right: 10px;"><img decoding="async" src="https://alldesign.com.co/wp-content/uploads/2025/03/cocinas-integrales-con-perfil-manija-interna-gola-y-graf-7.jpg" alt=""></div></div><div class="swiper-button-next mini-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-8f0a5c88ffac55af" aria-disabled="false"></div><div class="swiper-button-prev mini-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-8f0a5c88ffac55af" aria-disabled="true"></div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div></div><script>document.addEventListener("DOMContentLoaded", function() {var swiperThumbs = new Swiper(".mySwiper", {spaceBetween: 10,slidesPerView: 4,freeMode: true,watchSlidesProgress: true,navigation: { nextEl: ".mini-next", prevEl: ".mini-prev" }});var swiperMain = new Swiper(".mySwiper2", {spaceBetween: 10,navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },thumbs: { swiper: swiperThumbs }});});jQuery(document).ready(function($) {  $(".popup-image").magnificPopup({    type: "image",    gallery: { enabled: true }  });});</script></div>
+			</div>
+
+
+CÓDIGO PHP
+Creo que este es el código tabnto para cocinas integrales, para productos y para promociones
+
+
+/*=== GALERÍA ACF EN SWIPER PARA PRODUCTOS Y CPT ===*/
+function mostrar_galeria_acf_swiper_shortcode($atts) {
+    $atts = shortcode_atts(array(
+        'producto_id' => '',
+    ), $atts);
+    
+    $producto_id = $atts['producto_id'];
+    
+    if (empty($producto_id)) {
+        global $post;
+        $producto_id = $post->ID;
+    }
+    
+    if (empty($producto_id)) {
+        return 'No se pudo obtener el ID del producto o CPT.';
+    }
+    
+    // Obtener imagen destacada
+    $imagen_destacada_id = get_post_thumbnail_id($producto_id);
+    $imagen_destacada = $imagen_destacada_id ? wp_get_attachment_image_src($imagen_destacada_id, 'full') : false;
+    
+    // Obtener galería ACF desde el campo "galeria_cocinas"
+    $galeria = get_field('galeria_cocinas', $producto_id);
+    
+    ob_start();
+    
+    if ($imagen_destacada || $galeria) {
+        // Incluir los CDN de Swiper
+        echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">';
+        echo '<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>';
+
+        echo '<div class="contenodie">';
+
+        // Swiper principal
+        echo '<div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">';
+        echo '<div class="swiper-wrapper">';
+
+  
+
+        // Mostrar imágenes de la galería "galeria_cocinas"
+        if ($galeria) {
+            foreach ($galeria as $imagen) {
+                echo '<div class="swiper-slide">';
+                echo '<a href="' . esc_url($imagen['url']) . '" class="popup-image" style="background-image: url(' . esc_url($imagen['url']) . '); ">';
+                //echo '<img src="' . esc_url($imagen['url']) . '" alt="' . esc_attr($imagen['alt']) . '" />';
+                echo '</a>';
+                echo '</div>';
+            }
+        }
+        
+        echo '</div>';
+        echo '<div class="swiper-button-next"></div>';
+        echo '<div class="swiper-button-prev"></div>';
+        echo '</div>';
+
+        // Swiper miniaturas
+   // Verificar si hay más de una imagen en la galería antes de imprimir el contenedor de miniaturas
+if ($galeria && count($galeria) > 1) {
+    echo '<div thumbsSlider="" class="swiper mySwiper miniaturas-fx-galeria">';
+    echo '<div class="swiper-wrapper">';
+
+    // Miniaturas de la galería "galeria_cocinas"
+    foreach ($galeria as $imagen) {
+        echo '<div class="swiper-slide">';
+        echo '<img src="' . esc_url($imagen['url']) . '" alt="' . esc_attr($imagen['alt']) . '" />';
+        echo '</div>';
+    }
+
+    echo '</div>'; // Cierre de .swiper-wrapper
+    echo '<div class="swiper-button-next mini-next"></div>';
+    echo '<div class="swiper-button-prev mini-prev"></div>';
+    echo '</div>'; // Cierre de .miniaturas-fx-galeria
+}
+
+
+        echo '</div>';
+
+        // Script de inicialización de Swiper y Magnific Popup
+        echo '<script>';
+        echo 'document.addEventListener("DOMContentLoaded", function() {';
+        echo 'var swiperThumbs = new Swiper(".mySwiper", {';
+        echo 'spaceBetween: 10,';
+        echo 'slidesPerView: 4,';
+        echo 'freeMode: true,';
+        echo 'watchSlidesProgress: true,';
+        echo 'navigation: { nextEl: ".mini-next", prevEl: ".mini-prev" }';
+        echo '});';
+        echo 'var swiperMain = new Swiper(".mySwiper2", {';
+        echo 'spaceBetween: 10,';
+        echo 'navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },';
+        echo 'thumbs: { swiper: swiperThumbs }';
+        echo '});';
+        echo '});';
+        echo 'jQuery(document).ready(function($) {';
+        echo '  $(".popup-image").magnificPopup({';
+        echo '    type: "image",';
+        echo '    gallery: { enabled: true }';
+        echo '  });';
+        echo '});';
+        echo '</script>';
+    } else {
+        echo 'No se encontró ninguna imagen en la galería.';
+    }
+
+    return ob_get_clean();
+}
+add_shortcode('mostrar_galeria_acf_swiper', 'mostrar_galeria_acf_swiper_shortcode');
+/*==== FIN GALERÍA ACF PARA PRODUCTOS ====*/
+
+
+
+
+se meustra con este short code, y creo que sirve tanto para promociones, cocina sintegrales y productos
+[mostrar_galeria_acf_swiper]
+
+CSS DE LA GALERIA DE PRODUCTO
+/*==GALERÍA DE FOTOS PARA PRODUCTOS - JS SWIPER==*/
+   .contenodie .swiper {
+      width: 100%;
+      margin: auto;
+    }
+
+   .contenodie .mySwiper2 {
+      padding-top:100% !important;
+      width: 100%;
+    border:solid 3px #000;
+     border-radius:8px;
+    }
+   .contenodie .mySwiper2 .swiper-wrapper{
+      top:0;
+      position: absolute;
+  }
+
+  .contenodie  .mySwiper {
+      height: 20%;
+      padding: 10px 0;
+    }
+
+   .contenodie .mySwiper .swiper-slide {
+      width: 25%;
+      height: 100%;
+      opacity: 0.4;
+    }
+
+    .contenodie .mySwiper .swiper-slide-thumb-active {
+      opacity: 1;
+    }
+
+ .contenodie .swiper-slide a {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+
+    }
+
+
+     .contenodie .swiper-slide a:before {
+     display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: inherit;
+    filter: blur(8px);
+    content: "";
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.6);
+    background-size: cover;
+
+    }
+   .contenodie .swiper-slide a:after{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: inherit;
+    content: "";
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+        background-color: rgba(255, 255, 255, 0.4);
+
+   }
+
+    .contenodie .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      cursor: pointer;
+      padding: 0px;
+
+    }
+    .miniaturas-fx-galeria{
+        padding-top: 22% !important;
+        margin-top: 10px !important;
+        
+
+    }
+    .miniaturas-fx-galeria .swiper-wrapper{
+            position: absolute;
+            top:0;
+        }
+    .miniaturas-fx-galeria .swiper-slide{
+        border:solid 2px #ccc;
+        padding: 4px !important;
+        border-radius:5px;
+
+        }
+
+         .miniaturas-fx-galeria .swiper-slide img{
+ 
+        padding: 0px !important;
+        object-fit: cover;
+     
+
+        }
+.contenodie .swiper-button-next, .contenodie .swiper-button-prev {
+    color: #fff !important;
+    filter: drop-shadow(0px 0px 2px #000);
+    height: 60px;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 19px !important;
+    font-weight: bold;
+    
+}
+
+.contenodie .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
+
+    pointer-events: all !important;
+}
+
+.contenodie{
+  max-width: 700px;
+
+}
+.miniaturas-fx-galeria .swiper-slide {
+    border: solid 2px #000;
+}
+/*==FIN GALERÍA DE FOTOS PARA PRODUCTOS - JS SWIPER==*/

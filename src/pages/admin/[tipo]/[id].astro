@@ -1,0 +1,13 @@
+---
+import Panel from '../../../layouts/Panel.astro';
+import FormularioItem from '../../../components/panel/FormularioItem.astro';
+import { esTipo, getDB, getItemPorId, TIPOS } from '../../../lib/datos';
+
+const { tipo, id } = Astro.params;
+if (!esTipo(tipo)) return Astro.redirect('/admin');
+const item = await getItemPorId(getDB(Astro.locals), Number(id));
+if (!item || item.tipo !== tipo) return Astro.redirect(`/admin/${tipo}`);
+---
+<Panel titulo={`Editar ${TIPOS[tipo].singular}`} seccion={tipo}>
+  <FormularioItem tipo={tipo} item={item} />
+</Panel>

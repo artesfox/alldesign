@@ -1,0 +1,11 @@
+---
+import Panel from '../../../layouts/Panel.astro';
+import FormularioEntrada from '../../../components/panel/FormularioEntrada.astro';
+import { getDB, getEntradaPorId } from '../../../lib/datos';
+
+const entrada = await getEntradaPorId(getDB(Astro.locals), Number(Astro.params.id));
+if (!entrada) return Astro.redirect('/admin/entradas');
+---
+<Panel titulo="Editar entrada" seccion="entradas">
+  <FormularioEntrada entrada={entrada} />
+</Panel>

@@ -2,7 +2,7 @@
 // Página de detalle común para cocinas, productos y promociones.
 import Base from '../layouts/Base.astro';
 import GaleriaProducto from './GaleriaProducto.astro';
-import { getSitio, img, pesos, porcentaje, textoPlano, whatsapp, type Producto, type Promocion } from '../lib/datos';
+import { getDB, getSitio, img, pesos, porcentaje, textoPlano, whatsapp, type Producto, type Promocion } from '../lib/datos';
 
 interface Props {
   item: Producto | Promocion;
@@ -10,8 +10,8 @@ interface Props {
   boton?: string;
 }
 const { item, volver, boton = 'Solicitar cotización' } = Astro.props;
-const sitio = await getSitio();
-const promo = 'precio' in item ? (item as Promocion) : null;
+const sitio = await getSitio(getDB(Astro.locals));
+const promo = item.tipo === 'promociones' ? (item as Promocion) : null;
 const pct = promo ? porcentaje(promo.precio, promo.precioDescuento) : 0;
 const url = new URL(Astro.url.pathname, Astro.site).href;
 const mensaje = `Hola! Deseo ${promo ? 'información sobre la promoción' : 'una cotización de'}: ${item.titulo} ${url}`;
@@ -28,7 +28,7 @@ const mensaje = `Hola! Deseo ${promo ? 'información sobre la promoción' : 'una
         <h1>{item.titulo}</h1>
         <div class="texto" set:html={item.descripcion} />
 
-        {promo && (
+        {promo && promo.precioDescuento > 0 && (
           <div class="datos-de-la-promocion">
             <p class="descuentos-fx-1">
               <span class="precio-sin-descuento">{pesos(promo.precio)}</span>

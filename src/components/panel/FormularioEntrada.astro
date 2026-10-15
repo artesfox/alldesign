@@ -1,0 +1,48 @@
+---
+import EditorTexto from './EditorTexto.astro';
+import GestorFotos from './GestorFotos.astro';
+import type { Entrada } from '../../lib/datos';
+
+interface Props { entrada?: Entrada | null }
+const { entrada } = Astro.props;
+const nuevo = !entrada;
+const hoy = new Date().toISOString().slice(0, 10);
+---
+<form
+  class="formulario-panel"
+  data-formulario
+  data-url={nuevo ? '/api/admin/entradas' : `/api/admin/entradas/${entrada?.id}`}
+  data-metodo={nuevo ? 'POST' : 'PUT'}
+  data-volver="/admin/entradas"
+  novalidate
+>
+  <section class="tarjeta bloque">
+    <div class="campos">
+      <div class="campo campo--ancho">
+        <label for="titulo">Título de la entrada <span class="req">*</span></label>
+        <input class="entrada" id="titulo" name="titulo" type="text" maxlength="160" required value={entrada?.titulo ?? ''} />
+      </div>
+      <div class="campo">
+        <label for="fecha">Fecha</label>
+        <input class="entrada" id="fecha" name="fecha" type="date" value={entrada?.fecha ?? hoy} />
+      </div>
+      <div class="campo">
+        <span class="etiqueta-campo">Visibilidad</span>
+        <label class="interruptor"><input type="checkbox" name="publicado" checked={entrada ? entrada.publicado : true} /> Publicada en el blog</label>
+      </div>
+      <EditorTexto nombre="contenido" etiqueta="Descripción" valor={entrada?.contenido ?? ''} requerido />
+    </div>
+  </section>
+
+  <section class="tarjeta bloque">
+    <GestorFotos nombre="imagen" etiqueta="Imagen destacada" fotos={entrada?.imagen ? [entrada.imagen] : []} una requerido />
+  </section>
+
+  <div class="barra-guardar">
+    <span class="barra-guardar__estado" data-estado>{nuevo ? 'Nueva entrada' : 'Sin cambios'}</span>
+    <div class="barra-guardar__botones">
+      {!nuevo && <a class="btn btn--suave" href={`/${entrada?.slug}/`} target="_blank" rel="noopener">Ver en la web</a>}
+      <button type="submit" class="btn btn--primario btn--grande">{nuevo ? 'Publicar' : 'Guardar cambios'}</button>
+    </div>
+  </div>
+</form>

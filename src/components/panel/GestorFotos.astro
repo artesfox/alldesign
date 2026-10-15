@@ -1,0 +1,37 @@
+---
+// Gestor de fotos: agregar (se comprimen en el navegador), quitar y reordenar arrastrando.
+import { img } from '../../lib/datos';
+interface Props {
+  nombre: string;
+  fotos: string[];
+  etiqueta: string;
+  una?: boolean;          // solo una foto (imagen destacada del blog)
+  conAlt?: string[];      // textos alternativos (galería de inicio)
+  ayuda?: string;
+  requerido?: boolean;
+}
+const { nombre, fotos, etiqueta, una = false, conAlt, ayuda, requerido = false } = Astro.props;
+---
+<div class="campo campo--ancho">
+  <span class="etiqueta-campo">{etiqueta} {requerido && <span class="req">*</span>}</span>
+  {ayuda && <small>{ayuda}</small>}
+  <div class:list={['fotos', { 'fotos--una': una }]} data-fotos={nombre} data-una={una ? '1' : undefined} data-alt={conAlt ? '1' : undefined} data-requerido={requerido ? '1' : undefined}>
+    {fotos.map((f, i) => (
+      <div class="foto" data-nombre={f} draggable={una ? 'false' : 'true'}>
+        <img src={img(f, true)} alt="" loading="lazy" />
+        <span class="foto__portada">Portada</span>
+        <div class="foto__acciones">
+          {!una && <button type="button" data-mover="-1" title="Mover a la izquierda" aria-label="Mover a la izquierda">‹</button>}
+          {!una && <button type="button" data-mover="1" title="Mover a la derecha" aria-label="Mover a la derecha">›</button>}
+          <button type="button" data-quitar title="Quitar foto" aria-label="Quitar foto">×</button>
+        </div>
+        {conAlt && <input class="foto__alt" type="text" value={conAlt[i] ?? ''} placeholder="Descripción de la foto" aria-label="Descripción de la foto" />}
+      </div>
+    ))}
+    <label class="agregar-foto" hidden={una && fotos.length > 0}>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+      {una ? 'Elegir imagen' : 'Agregar fotos'}
+      <input type="file" accept="image/*" multiple={!una} />
+    </label>
+  </div>
+</div>

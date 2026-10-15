@@ -1,9 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
 import TarjetaBlog from '../../components/TarjetaBlog.astro';
-import { getEntradas } from '../../lib/datos';
+import { getDB, getEntradas } from '../../lib/datos';
 
-const entradas = await getEntradas();
+const entradas = await getEntradas(getDB(Astro.locals));
 ---
 <Base titulo="Blog" descripcion="Consejos, ideas y tendencias sobre cocinas integrales, materiales y muebles para el hogar en Bogotá.">
   <section class="seccion">

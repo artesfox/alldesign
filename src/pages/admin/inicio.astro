@@ -1,0 +1,71 @@
+---
+import Panel from '../../layouts/Panel.astro';
+import EditorTexto from '../../components/panel/EditorTexto.astro';
+import GestorFotos from '../../components/panel/GestorFotos.astro';
+import { getDB, getSitio, instalada } from '../../lib/datos';
+
+const db = getDB(Astro.locals);
+if (!(await instalada(db))) return Astro.redirect('/admin');
+const s = await getSitio(db);
+const redes: [keyof typeof s.redes, string, string][] = [
+  ['facebook', 'Facebook', 'https://facebook.com/…'],
+  ['instagram', 'Instagram', 'https://instagram.com/…'],
+  ['linkedin', 'LinkedIn', 'https://linkedin.com/company/…'],
+  ['youtube', 'YouTube', 'https://youtube.com/@…'],
+  ['tiktok', 'TikTok', 'https://tiktok.com/@…'],
+  ['pinterest', 'Pinterest', 'https://pinterest.com/…'],
+  ['google', 'Google (Maps / perfil de empresa)', 'https://maps.google.com/…'],
+];
+---
+<Panel titulo="Inicio e información" seccion="inicio">
+  <form class="formulario-panel" data-formulario data-url="/api/admin/sitio" data-metodo="PUT" novalidate>
+    <section class="tarjeta bloque">
+      <h2 class="bloque__titulo">Página de inicio</h2>
+      <p class="bloque__ayuda">Título principal y texto que aparecen debajo del carrusel.</p>
+      <div class="campos">
+        <div class="campo campo--ancho">
+          <label for="titulo">Título de página de inicio <span class="req">*</span></label>
+          <input class="entrada" id="titulo" name="titulo" type="text" maxlength="160" required value={s.titulo} />
+        </div>
+        <EditorTexto nombre="descripcion" etiqueta="Descripción página" valor={s.descripcion} requerido />
+      </div>
+    </section>
+
+    <section class="tarjeta bloque">
+      <h2 class="bloque__titulo">Carrusel de inicio</h2>
+      <p class="bloque__ayuda">Fotos del carrusel principal. Arrastra para ordenarlas y escribe una descripción corta de cada una (ayuda en Google).</p>
+      <GestorFotos nombre="galeriaInicio" etiqueta="Fotos del carrusel" fotos={s.galeriaInicio.map((f) => f.imagen)} conAlt={s.galeriaInicio.map((f) => f.alt)} />
+    </section>
+
+    <section class="tarjeta bloque">
+      <h2 class="bloque__titulo">Contacto y pie de página</h2>
+      <p class="bloque__ayuda">Los teléfonos que llenes se muestran uno al lado del otro en el pie de página.</p>
+      <div class="campos">
+        <div class="campo"><label for="tituloPie">Título pie de página</label><input class="entrada" id="tituloPie" name="tituloPie" value={s.tituloPie} /></div>
+        <div class="campo"><label for="footerInfo">Footer info</label><input class="entrada" id="footerInfo" name="footerInfo" value={s.footerInfo} /></div>
+        <div class="campo"><label for="celular1">Número de celular 1</label><input class="entrada" id="celular1" name="celular1" inputmode="tel" value={s.celular1} /><small>También es el número de WhatsApp de la web.</small></div>
+        <div class="campo"><label for="celular2">Número de celular 2</label><input class="entrada" id="celular2" name="celular2" inputmode="tel" value={s.celular2} /></div>
+        <div class="campo"><label for="telefonoFijo">Teléfono fijo</label><input class="entrada" id="telefonoFijo" name="telefonoFijo" inputmode="tel" value={s.telefonoFijo} /></div>
+        <div class="campo"><label for="correo">Correo del sitio</label><input class="entrada" id="correo" name="correo" type="email" value={s.correo} /></div>
+      </div>
+    </section>
+
+    <section class="tarjeta bloque">
+      <h2 class="bloque__titulo">Redes sociales</h2>
+      <p class="bloque__ayuda">Pega el enlace completo. Las que dejes vacías no aparecen en la web.</p>
+      <div class="campos">
+        {redes.map(([clave, nombre, ejemplo]) => (
+          <div class="campo"><label for={clave}>{nombre}</label><input class="entrada" id={clave} name={clave} type="url" placeholder={ejemplo} value={s.redes[clave]} /></div>
+        ))}
+      </div>
+    </section>
+
+    <div class="barra-guardar">
+      <span class="barra-guardar__estado" data-estado>Sin cambios</span>
+      <div class="barra-guardar__botones">
+        <a class="btn btn--suave" href="/" target="_blank" rel="noopener">Ver en la web</a>
+        <button type="submit" class="btn btn--primario btn--grande">Guardar cambios</button>
+      </div>
+    </div>
+  </form>
+</Panel>

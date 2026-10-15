@@ -1,0 +1,41 @@
+---
+import Panel from '../../../layouts/Panel.astro';
+import { fechaCorta, getDB, getEntradas, img, instalada } from '../../../lib/datos';
+
+const db = getDB(Astro.locals);
+if (!(await instalada(db))) return Astro.redirect('/admin');
+const entradas = await getEntradas(db, true);
+---
+<Panel titulo="Entradas del blog" seccion="entradas">
+  <div class="cabecera-lista">
+    <input class="entrada buscador" type="search" placeholder="Buscar entradas…" data-buscar aria-label="Buscar" />
+    <a class="btn btn--primario" href="/admin/entradas/nuevo">+ Nueva entrada</a>
+  </div>
+  <div class="tarjeta">
+    {entradas.length === 0 ? (
+      <p class="vacio">Todavía no hay entradas. <a href="/admin/entradas/nuevo">Escribe la primera</a>.</p>
+    ) : (
+      <ul class="lista">
+        {entradas.map((e) => (
+          <li class="fila" data-fila data-texto={e.titulo.toLowerCase()}>
+            <img class="fila__foto" src={img(e.imagen, true)} alt="" loading="lazy" />
+            <div class="fila__datos">
+              <a class="fila__titulo" href={`/admin/entradas/${e.id}`}>{e.titulo}</a>
+              <div class="fila__meta">
+                <span>{fechaCorta(e.fecha)}</span>
+                {!e.publicado && <span class="etiqueta etiqueta--borrador">Borrador</span>}
+              </div>
+            </div>
+            <div class="fila__acciones">
+              <a class="btn btn--suave btn--icono" href={`/${e.slug}/`} target="_blank" rel="noopener" title="Ver en la web" aria-label="Ver en la web">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" /><circle cx="12" cy="12" r="3" /></svg>
+              </a>
+              <a class="btn btn--suave" href={`/admin/entradas/${e.id}`}>Editar</a>
+              <button type="button" class="btn btn--peligro" data-borrar={`/api/admin/entradas/${e.id}`} data-nombre={e.titulo}>Borrar</button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</Panel>
